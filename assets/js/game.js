@@ -8,7 +8,7 @@
 // var enemy.attack = 12;
 
 
-var fight = function(enemyInfo) {
+var fight = function(enemy) {
     // repeat and execute as long as the enemy robot is alive
     while(playerInfo.health > 0 && enemy.health > 0) {
 
