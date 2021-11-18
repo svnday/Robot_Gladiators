@@ -26,15 +26,16 @@ var fight = function(enemyName) {
             if (confirmSkip) {
                 window.alert(playerName + " has decided to skip this fight. Goodbye!");
                 //subtract money from playerMoney for skipping
-                playerMoney = playerMoney - 10;
+                playerMoney = Math.max(0, playerMoney - 10);
                 console.log("playerMoney", playerMoney);
                 break;
             }
         }
 
         //Subtract the value of 'playerAttack' from the value of 'enemy health' and use that result to update the value in the 'enemyHealth' variable
-        enemyHealth = enemyHealth - playerAttack;
-        console.log (playerName + " attacked " + enemyName + " . " + enemyName + " now has " + enemyHealth + " health remaining. ");
+        var damage = randomNumber(playerAttack - 3, playerAttack);
+        enemyHealth = Math.max(0, enemyHealth - damage);
+            console.log (playerName + " attacked " + enemyName + " . " + enemyName + " now has " + enemyHealth + " health remaining. ");
 
         if (enemyHealth <= 0 ) {
             window.alert(enemyName + " has died!");
@@ -49,7 +50,8 @@ var fight = function(enemyName) {
         }
 
             //remove players health
-        playerHealth = playerHealth - enemyAttack;
+        var damage = randomNumber(enemyAttack - 3, enemyAttack)
+        playerHealth = Math.max(0, playerHealth - damage);
             console.log (enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
 
             // if player health is less than or equal to 0, notify they have died
@@ -73,7 +75,7 @@ var startGame = function() {
         if (playerHealth > 0) {
             window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ) );
             var pickedEnemyName = enemyNames[i];
-            enemyHealth = 50;
+            enemyHealth = randomNumber(40,60);
             // debugger;
             fight(pickedEnemyName);
         //if we're not at the last enemy in the array
@@ -166,6 +168,13 @@ var shop = function() {
             break;
     }
 };
+
+//function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min +1) + min);
+
+    return value;
+}
 
 // start game when page loads
 startGame();
