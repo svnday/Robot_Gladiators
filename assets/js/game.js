@@ -10,7 +10,6 @@
 var fightOrSkip = function() {
     // ask player if they'd like to fight or skip using fightOrSkip function
     var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-
     if (promptFight === "" || promptFight === null) {
         window.alert("You need to provide a valid answer! Please try again.");
         return fightOrSkip();
@@ -30,6 +29,7 @@ var fightOrSkip = function() {
             // return true if player wants to leave
             return true;
         }
+    }
     return false;
 }
 
@@ -37,7 +37,7 @@ var fightOrSkip = function() {
 var fight = function(enemy) {
     // repeat and execute as long as the enemy robot is alive
     while(playerInfo.health > 0 && enemy.health > 0) {
-        //ask polayer if they'd like to fight or skip using fightOrSkip function
+        //ask player if they'd like to fight or skip using fightOrSkip function
         if (fightOrSkip()) {
             //if true, leave fight by breaking loop
             break;
@@ -131,22 +131,19 @@ var endGame = function() {
 var shop = function() {
     // ask player what they would like to do
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
     );
-
+    shopOptionPrompt = parseInt (shopOptionPrompt);
     // use switch to carry out action
     switch (shopOptionPrompt) {
-        case "refill": // new case
-        case "REFILL":
+        case 1: // new case
             playerInfo.refillHealth();
             break;
-        case "upgrade": // new case
-        case "UPGRADE":
+        case 2: // new case
             playerInfo.upgradeAttack();
             break;
 
-        case "leave": // new case
-        case "LEAVE":
+        case 3: // new case
             window.alert("You have left the store.");
 
             // do nothing, so function will end
@@ -229,6 +226,4 @@ var enemyInfo = [
 
 
 // start game when page loads
-startGame(); 
-
-}
+startGame();
