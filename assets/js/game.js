@@ -7,6 +7,13 @@
 // var enemy.health = 50;
 // var enemy.attack = 12;
 
+//function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min) + min);
+
+    return value;
+};
+
 var fightOrSkip = function() {
     // ask player if they'd like to fight or skip using fightOrSkip function
     var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -179,12 +186,6 @@ var shop = function() {
     }
 };
 
-//function to generate a random numeric value
-var randomNumber = function(min, max) {
-    var value = Math.floor(Math.random() * (max - min +1) + min);
-
-    return value;
-};
 
 var getPlayerName = function() {
     var name = "";
