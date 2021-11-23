@@ -229,4 +229,6 @@ var enemyInfo = [
 
 
 // start game when page loads
-startGame();
+startGame(); 
+
+}
